@@ -70,8 +70,8 @@ class Display():
             s = "%c%c%c%c%c%c%c%c"
             
         if color3==-1 or color4==-1:
-            color1, color2 = splitColor(color1)
             color3, color4 = splitColor(color2)
+            color1, color2 = splitColor(color1)
         message = (s % (0x05, x, y, len(text), color1, color2, color3, color4)) + text
         self.ser.write(message.encode())
 
