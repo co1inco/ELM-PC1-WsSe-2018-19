@@ -1,7 +1,10 @@
 #pragma once
 
 #include "Serial.h"
+#include <math.h>
+#include <iostream>
 
+#define PI 3.14159265
 
 class Display {
 public:
@@ -59,6 +62,38 @@ public:
 		char command[8];
 		sprintf_s(command, 8, "%c%c%c%c%c%c%c", 0x02, posx1, posy1, posx2, posy2, clow, chigh);
 		ser.Write(command, 7);
+	}
+
+	void drawOval(int x1, int y1, int x2, int y2, char c[8], int width, bool keepWidth=true) {
+		int clow, chigh;
+		splitColor(hex2col(c), &clow, &chigh);
+
+		if (keepWidth == true) {
+			x1 = x1 + (y2 - y1);
+			x2 = x2 - (y2 - y1);
+		}
+		
+		char command[8];
+		sprintf_s(command, 8, "%c%c%c%c%c%c%c", 0x02, x1, y1, x2, y1 + width, clow, chigh);
+		ser.Write(command, 7);
+		sprintf_s(command, 8, "%c%c%c%c%c%c%c", 0x02, x1, y2 - width, x2, y2, clow, chigh);
+		ser.Write(command, 7);
+
+		int curveResolution = 2;
+
+		int i;
+		int pos;
+		double mapOut;
+		for (i = y1-1; i < y2; i += curveResolution) {
+			mapOut = map(i, y1, y2, 0, PI * 100000);
+			mapOut = mapOut / 100000;
+			pos = sin(mapOut)*(y2 - y1);
+//			printf( "%i\n", pos);
+			sprintf_s(command, 8, "%c%c%c%c%c%c%c", 0x02, x1 - pos - 3, i, x1 - pos, i + curveResolution-1, clow, chigh);
+			ser.Write(command, 7);
+			sprintf_s(command, 8, "%c%c%c%c%c%c%c", 0x02, x2 + pos, i, x2 + pos + 3, i + curveResolution - 1, clow, chigh);
+			ser.Write(command, 7);
+		}
 	}
 
 	void drawText(int posx, int posy, int fglow, int fghigh, int bglow, int bghigh, int tSize, char* text) {

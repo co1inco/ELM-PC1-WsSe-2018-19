@@ -110,9 +110,9 @@ class Display():
             commands.append((s % (0x02, x1, y1, x2, y1+width, color1, color2)).encode())
             commands.append((s % (0x02, x1, y2-width, x2, y2, color1, color2)).encode())
             for i in range(y1, y2, 2):
-                pos = round(math.sin(map(i, y1, y2, 0, math.pi))*width)
+                pos = round(math.sin(map(i, y1, y2, 0, math.pi))*(y2-y1))
                 commands.append((s % (0x02, x1-pos-2, i, x1-pos, i+1, color1, color2)).encode())
-                commands.append((s % (0x02, x2+pos, i, x1+pos+2, i+1, color1, color2)).encode())
+                commands.append((s % (0x02, x2+pos, i, x2+pos+2, i+1, color1, color2)).encode())
 
         for i in commands:
             self.ser.write(i)

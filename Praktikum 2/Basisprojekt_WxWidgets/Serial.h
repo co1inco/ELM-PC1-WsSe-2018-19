@@ -50,6 +50,7 @@ public:
 		//		ser.closeCom();
 	}
 	void write(char* command, int length) {
+		
 		int i;
 		char s[8];
 		sprintf_s(s, 8, "%2i | ", length);
@@ -58,6 +59,7 @@ public:
 			std::cout << command[i];
 		}
 		std::cout << "\n";
+		
 		//		port->Write(command, length);
 	}
 	void Write(char* command, int length) {

@@ -28,10 +28,6 @@ long map(long x, long in_min, long in_max, long out_min, long out_max)
 */
 
 
-
-
-
-
 void main()
 {
 	bool openSuccsess = false;
@@ -83,7 +79,7 @@ void main()
 
 		char sVolt[] = "in Volt";
 		dsp.drawText(volt_xPos, text_yPos, voltDesFg, voltDesBg, sizeof(sVolt), sVolt);
-		dsp.drawRectangle(volt_xPos, num_xPos, volt_xPos + sizeof(sVolt) * 7, 70, voltRecFg, 3);
+		dsp.drawOval(volt_xPos, num_xPos, volt_xPos + sizeof(sVolt) * 7, 70, voltRecFg, 3);
 
 
 		dsp.drawRectangle(gelesen_xPos, dia_yPos, volt_xPos + sizeof(sVolt) * 7, dia_yPos + 20, diaRecFg, 4);
