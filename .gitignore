@@ -3,3 +3,5 @@
 */*/Debug/*
 *log
 *.pyc
+*.cd
+*.filters

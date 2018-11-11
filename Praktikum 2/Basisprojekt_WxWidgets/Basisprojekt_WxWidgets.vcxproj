@@ -12,9 +12,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="comBasis.h" />
+    <ClInclude Include="colorLib.h" />
+    <ClInclude Include="Display.h" />
+    <ClInclude Include="Serial.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="comBasis.cpp" />
+    <ClCompile Include="colorLib.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

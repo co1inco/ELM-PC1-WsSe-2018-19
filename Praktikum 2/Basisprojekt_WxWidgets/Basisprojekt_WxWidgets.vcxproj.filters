@@ -18,12 +18,24 @@
     <ClInclude Include="comBasis.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="colorLib.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Serial.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Display.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="comBasis.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="test.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="colorLib.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
