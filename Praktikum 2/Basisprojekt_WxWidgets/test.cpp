@@ -41,7 +41,7 @@ void main()
 		char* bgColor = red;
 		char* potiDesFg = black;
 		char* potiDesBg = bgColor;
-		char* potiRecFg = black;
+		char* potiRecFg = green;
 		char* potiTxtFg = black;
 		char* potiTxtBg = bgColor;
 		char* voltDesFg = black;
