@@ -5,3 +5,7 @@
 *.pyc
 *.cd
 *.filters
+.vs/ELM-PC1-WsSe-2018-19/v15/.suo
+.vs/ELM-PC1-WsSe-2018-19/v15/Browse.VC.db
+.vs/ProjectSettings.json
+*.sqlite
