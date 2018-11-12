@@ -20,14 +20,6 @@ using namespace std;
 #define POS_TEXT1 (30)
 
 
-/*
-long map(long x, long in_min, long in_max, long out_min, long out_max)
-{
-	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-}
-*/
-
-
 void main()
 {
 	bool openSuccsess = false;
@@ -38,20 +30,31 @@ void main()
 	if (openSuccsess) {
 		bool runMainloop = true;
 
-		char* bgColor = red;
+		char* bgColor = white;
+
 		char* potiDesFg = black;
 		char* potiDesBg = bgColor;
-		char* potiRecFg = green;
-		char* potiTxtFg = black;
-		char* potiTxtBg = bgColor;
-		char* voltDesFg = black;
-		char* voltDesBg = bgColor;
-		char* voltRecFg = black;
-		char* voltTxtFg = black;
-		char* voltTxtBg = bgColor;
+		char* potiRecFg = black;
+		char* potiTxtFg = white;
+		char potiTxtBg[8];
+
+		std::memcpy(potiTxtBg, red, 8);
+		
+		char* voltDesFg = white;
+		char* voltDesBg = black;
+		char* voltRecFg = blue;
+		char* voltTxtFg = white;
+		char voltTxtBg[8];
+
+		std::memcpy(voltTxtBg, green, 8);
+		
 		char* diaRecFg = black;
-		char* diaLeftFg = blue;
-		char* diaRightFg = bgColor;
+		char diaLeftFg[8];
+		char diaRightFg[8];
+
+		std::memcpy(diaLeftFg, blue, 8);
+		std::memcpy(diaRightFg, blue, 8);
+		invertColor(diaRightFg);
 
 
 		int poti = 0;
@@ -73,13 +76,14 @@ void main()
 		dsp.drawRectangle(0, 0, DISP_WIDTH, DISP_HEIGHT, black, 5);
 
 		char gelesen[] = "gelesen";
-		dsp.drawText(gelesen_xPos, text_yPos, potiDesFg, potiDesBg, sizeof(gelesen), gelesen);
-		dsp.drawRectangle(gelesen_xPos, num_xPos, gelesen_xPos + sizeof(gelesen) * 7, 70, potiRecFg, 3);
+		dsp.drawText(gelesen_xPos, text_yPos, potiDesFg, potiDesBg, gelesen);
+		dsp.drawRectangle(gelesen_xPos, num_xPos, gelesen_xPos + sizeof(gelesen) * 7, 70, potiRecFg, 1);
 
 
 		char sVolt[] = "in Volt";
-		dsp.drawText(volt_xPos, text_yPos, voltDesFg, voltDesBg, sizeof(sVolt), sVolt);
-		dsp.drawOval(volt_xPos, num_xPos, volt_xPos + sizeof(sVolt) * 7, 70, voltRecFg, 3);
+		dsp.drawText(volt_xPos, text_yPos, voltDesFg, voltDesBg, sVolt);
+//		dsp.drawRectangle(volt_xPos, num_xPos, volt_xPos + sizeof(sVolt) * 7, 70, voltRecFg, 4);
+		dsp.drawOval(volt_xPos, num_xPos, volt_xPos + sizeof(sVolt) * 7, 70, voltRecFg, 1);
 
 
 		dsp.drawRectangle(gelesen_xPos, dia_yPos, volt_xPos + sizeof(sVolt) * 7, dia_yPos + 20, diaRecFg, 4);
@@ -89,20 +93,27 @@ void main()
 			poti = dsp.readPoti();
 			std::cout << poti << '\n';
 
-			sprintf(potiTxt, "%04i ", poti);
-			dsp.drawText(gelesen_xPos + 14, text_yPos + 29, potiTxtFg, potiTxtBg, sizeof(potiTxt), potiTxt);
+			sprintf(potiTxt, "%04i", poti);
+			dsp.drawText(gelesen_xPos + 14, text_yPos + 29, potiTxtFg, potiTxtBg, potiTxt);
 
 			potiVolt = map(poti, 0, 1023, 0, 500);
-			sprintf(voltTxt, "%i.%i", potiVolt / 100, potiVolt % 100);
-			dsp.drawText(volt_xPos + 15, text_yPos + 29, voltTxtFg, voltTxtBg, sizeof(voltTxt), voltTxt);
+			sprintf(voltTxt, "%i.%02i", potiVolt / 100, potiVolt % 100);
+			dsp.drawText(volt_xPos + 15, text_yPos + 29, voltTxtFg, voltTxtBg, voltTxt);
 
-//			diaWidth = map(poti, 0, 1023, gelesen_xPos + 4, volt_xPos + sizeof(sVolt) * 7 - 4);
+			diaWidth = map(poti, 0, 1023, gelesen_xPos + 4, volt_xPos + sizeof(sVolt) * 7 - 4);
 //			dsp.drawRectangle(diaWidth, dia_yPos + 4 + 2, volt_xPos + sizeof(sVolt) * 7 - 4, dia_yPos + 14, diaRightFg);
 //			dsp.drawRectangle(gelesen_xPos + 4, dia_yPos + 4 + 2, diaWidth, dia_yPos + 14, diaLeftFg);
 			dsp.drawBalken(gelesen_xPos + 4, dia_yPos + 4 + 2, volt_xPos + sizeof(sVolt) * 7 - 4, dia_yPos + 14, diaLeftFg, diaRightFg, poti, 1023);
 
+			/*
+			invertColor(potiTxtBg);
+			invertColor(voltTxtBg);
+			invertColor(diaLeftFg);
+			invertColor(diaRightFg);
+			*/
+
 			Sleep(10);
-			runMainloop = false;
+//			runMainloop = false;
 		}
 
 		dsp.close();

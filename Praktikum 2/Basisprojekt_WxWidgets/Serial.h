@@ -16,11 +16,12 @@ public:
 
 	void write(char* command, int length) {
 		port->Write(command, length);
+		Sleep(1);
 	}
 	void Write(char* command, int length) {
 		write(command, length);
 	}
-	void writecom(char* command, int length) {
+	void writeCom(char* command, int length) {
 		write(command, length);
 	}
 
@@ -31,6 +32,9 @@ public:
 		read(receive, length);
 	}
 	void Readv(char* receive, int length) {
+		read(receive, length);
+	}
+	void readCom(char* receive, int length) {
 		read(receive, length);
 	}
 

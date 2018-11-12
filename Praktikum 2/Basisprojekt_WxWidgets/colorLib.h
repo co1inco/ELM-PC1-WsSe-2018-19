@@ -17,6 +17,7 @@ int hex2col(char colorS[8]);
 void splitColor(int color[2]);
 void splitColor(int c, int* c1, int* c2);
 
+void invertColor(char c[6]);
 
 //	color[1] = int(("%04x" % color)[2:4], 0x10), int(("%04x" % color)[0:2], 0x10)
 /*

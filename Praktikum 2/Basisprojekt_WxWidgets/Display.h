@@ -3,6 +3,7 @@
 #include "Serial.h"
 #include <math.h>
 #include <iostream>
+#include <string>
 
 #define PI 3.14159265
 
@@ -77,8 +78,8 @@ public:
 		splitColor(hex2col(c), &clow, &chigh);
 
 		if (keepWidth == true) {
-			x1 = x1 + (y2 - y1);
-			x2 = x2 - (y2 - y1);
+			x1 = x1 + ((y2 - y1)/2);
+			x2 = x2 - ((y2 - y1)/2);
 		}
 		
 		char command[8];
@@ -92,10 +93,10 @@ public:
 		int i;
 		int pos;
 		double mapOut;
-		for (i = y1-1; i < y2; i += curveResolution) {
+		for (i = y1+1; i < y2; i += curveResolution) {
 			mapOut = map(i, y1, y2, 0, PI * 100000);
 			mapOut = mapOut / 100000;
-			pos = sin(mapOut)*(y2 - y1);
+			pos = sin(mapOut)*((y2 - y1)/2);
 //			printf( "%i\n", pos);
 			sprintf_s(command, 8, "%c%c%c%c%c%c%c", 0x02, x1 - pos - 3, i, x1 - pos, i + curveResolution-1, clow, chigh);
 			ser.Write(command, 7);
@@ -104,45 +105,39 @@ public:
 		}
 	}
 
-	void drawText(int posx, int posy, int fglow, int fghigh, int bglow, int bghigh, int tSize, char* text) {
+	void drawText(int posx, int posy, int fglow, int fghigh, int bglow, int bghigh, char* text) {
 		char command[100];
-		sprintf_s(command, 100, "%c%c%c%c%c%c%c%c", 0x05, posx, posy, tSize, fglow, fghigh, bglow, bghigh);
-
-		int i;
-		for (i = 0; (i < tSize) && (i < 8 + tSize); i++) {
-			command[8 + i] = text[i];
-		}
+		int tSize = strlen(text);
+		sprintf_s(command, 100, "%c%c%c%c%c%c%c%c%s", 0x05, posx, posy, tSize, fglow, fghigh, bglow, bghigh, text);
 		ser.Write(command, 8 + tSize);
 	}
-	void drawText(int posx, int posy, char fg[8], char bg[8], int tSize, char* text) {
+	void drawText(int posx, int posy, char fg[8], char bg[8], char* text) {
 		int fglow, fghigh;
 		splitColor(hex2col(fg), &fglow, &fghigh);
 		int bglow, bghigh;
 		splitColor(hex2col(bg), &bglow, &bghigh);
 
-		char command[100];
-		sprintf_s(command, 100, "%c%c%c%c%c%c%c%c", 0x05, posx, posy, tSize, fglow, fghigh, bglow, bghigh);
+		int tSize = strlen(text);
 
-		int i;
-		for (i = 0; (i < tSize) && (i < 8 + tSize); i++) {
-			command[8 + i] = text[i];
-		}
+		char command[100];
+		sprintf_s(command, 100, "%c%c%c%c%c%c%c%c%s", 0x05, posx, posy, tSize, fglow, fghigh, bglow, bghigh, text);
+
 		ser.Write(command, 8 + tSize);
 	}
 
 	int readPoti() {
 		char command[1] = { 0x06 };
+		char receive[3];
 		ser.Write(command, 1);
 
-		char receive[2];
 		ser.Readv(receive, 2);
 
-		int i = receive[1] * 0x10 + receive[0];  //256
+		int i = receive[1] * 256 + receive[0];  //256
 		return i;
 	}
 
 private:
 	int dummy;
-	SerialDummy ser;
+	Serial ser;
 };
 

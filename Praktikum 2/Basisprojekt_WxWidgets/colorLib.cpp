@@ -13,6 +13,18 @@ char grey[] = "#7d7d7d";
 char orange[] = "#ff8000";
 
 
+enum farbe {
+	_red,
+	_green,
+	_blue,
+	_black,
+	_white,
+	_grey,
+	_orange
+};
+char farbe[7][8] = { "#ff0000", "#00ff00", "#0000ff", "#000000", "#ffffff", "#7d7d7d", "ff8000"};
+
+
 long map(long value, long x1, long x2, long y1, long y2) {
 	return (value - x1) * (y2 - y1) / (x2 - x1) + y1;
 }
@@ -43,10 +55,21 @@ void splitColor(int color[2]) {
 	color[0] = color[0] / 0x100;
 }
 void splitColor(int c, int* c1, int* c2) {
-	*c1 = c / 0x100;
-	*c2 = c % 0x100;
+	*c1 = c % 0x100;
+	*c2 = c / 0x100;
 }
 
+void invertColor(char c[6]) {
+	int tmpC;
+	sscanf(c, "#%06x", &tmpC);
+	//	std::cout << c << " -> ";
+	//	std::cout << "(" << tmpC;
+	tmpC = ~tmpC;
+	tmpC = tmpC & 0x00ffffff;
+	//	std::cout << "  " << tmpC << ") ";
+	sprintf(c, "#%06x", tmpC);
+	//	std::cout << c << "\n";
+}
 
 /*
 def printColor(c1, c2 = -1, c3 = -1) :
