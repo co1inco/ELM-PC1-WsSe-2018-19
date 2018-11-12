@@ -64,6 +64,14 @@ public:
 		ser.Write(command, 7);
 	}
 
+	void drawBalken(int x1, int y1, int x2, int y2, char cFg[8], char cBg[8], int value, int valueMax=0) {
+
+		int xPos = map(value, 0, valueMax, x1, x2);
+
+		drawRectangle(x1, y1, xPos, y2, cFg);
+		drawRectangle(xPos,	y1,	x2, y2, cBg);
+	}
+
 	void drawOval(int x1, int y1, int x2, int y2, char c[8], int width, bool keepWidth=true) {
 		int clow, chigh;
 		splitColor(hex2col(c), &clow, &chigh);
@@ -129,7 +137,7 @@ public:
 		char receive[2];
 		ser.Readv(receive, 2);
 
-		int i = receive[1] * 256 + receive[0];
+		int i = receive[1] * 0x10 + receive[0];  //256
 		return i;
 	}
 

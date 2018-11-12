@@ -56,9 +56,9 @@ void main()
 
 		int poti = 0;
 		int diaWidth = 0;
-		char potiTxt[5];
+		char potiTxt[6];
 		int potiVolt = 0;
-		char voltTxt[5] = "5.00";
+		char voltTxt[6] = "5.00";
 
 		int gelesen_xPos = 20;
 		int volt_xPos = 95;
@@ -96,9 +96,10 @@ void main()
 			sprintf(voltTxt, "%i.%i", potiVolt / 100, potiVolt % 100);
 			dsp.drawText(volt_xPos + 15, text_yPos + 29, voltTxtFg, voltTxtBg, sizeof(voltTxt), voltTxt);
 
-			diaWidth = map(poti, 0, 1023, gelesen_xPos + 4, volt_xPos + sizeof(sVolt) * 7 - 4);
-			dsp.drawRectangle(diaWidth, dia_yPos + 4 + 2, volt_xPos + sizeof(sVolt) * 7 - 4, dia_yPos + 14, diaRightFg);
-			dsp.drawRectangle(gelesen_xPos + 4, dia_yPos + 4 + 2, diaWidth, dia_yPos + 14, diaLeftFg);
+//			diaWidth = map(poti, 0, 1023, gelesen_xPos + 4, volt_xPos + sizeof(sVolt) * 7 - 4);
+//			dsp.drawRectangle(diaWidth, dia_yPos + 4 + 2, volt_xPos + sizeof(sVolt) * 7 - 4, dia_yPos + 14, diaRightFg);
+//			dsp.drawRectangle(gelesen_xPos + 4, dia_yPos + 4 + 2, diaWidth, dia_yPos + 14, diaLeftFg);
+			dsp.drawBalken(gelesen_xPos + 4, dia_yPos + 4 + 2, volt_xPos + sizeof(sVolt) * 7 - 4, dia_yPos + 14, diaLeftFg, diaRightFg, poti, 1023);
 
 			Sleep(10);
 			runMainloop = false;

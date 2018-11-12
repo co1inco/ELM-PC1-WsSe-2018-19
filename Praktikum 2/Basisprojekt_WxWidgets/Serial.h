@@ -13,12 +13,17 @@ public:
 	void close() {
 		ser.closeCom();
 	}
+
 	void write(char* command, int length) {
 		port->Write(command, length);
 	}
 	void Write(char* command, int length) {
 		write(command, length);
 	}
+	void writecom(char* command, int length) {
+		write(command, length);
+	}
+
 	void read(char* receive, int length) {
 		port->Readv(receive, length, NULL, false);
 	}
