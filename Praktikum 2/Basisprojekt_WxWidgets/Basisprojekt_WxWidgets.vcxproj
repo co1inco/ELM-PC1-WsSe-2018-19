@@ -19,6 +19,7 @@
   <ItemGroup>
     <ClCompile Include="comBasis.cpp" />
     <ClCompile Include="colorLib.cpp" />
+    <ClCompile Include="Display.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

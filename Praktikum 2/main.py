@@ -45,7 +45,7 @@ class drawProcess(threading.Thread):
 if __name__ == '__main__':
 
     
-    dsp = Display()
+    dsp = Display(port='COM6')
 
     if True:
 
@@ -104,7 +104,7 @@ if __name__ == '__main__':
             dsp.drawRectangle(gelesen_xPos + 4, dia_yPos + 4 + 2, diaWidth, dia_yPos + 14, cdiaMid)
 
         
-            runMainloop = False
+#            runMainloop = False
 
 
 

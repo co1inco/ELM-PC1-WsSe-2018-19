@@ -6,25 +6,25 @@ port = 'COM1'
 baud = 9600
 
 class serCom():
-    def __init__(self, port='COM1', baud=9600, timeout=2):
-        pass
-        #self.ser = serial.Serial(port, baud, timeout=timeout)
+    def __init__(self, port='COM6', baud=9600, timeout=2):
+#        pass
+        self.ser = serial.Serial(port, baud, timeout=timeout)
 
     def write(self, message):
-        print("Serial send: " + str(message))
-        #self.ser.write(message)
+#        print("Serial send: " + str(message))
+        self.ser.write(message)
 
     def read(self):
         return str(500).encode()
     def close(self):
-        pass
-        #self.close()
+#        pass
+        self.close()
 
 
 class Display():
-    def __init__(self, port='COM1', baud=9600, timeout=2):
+    def __init__(self, port='COM6', baud=9600, timeout=2):
         self.ser = serCom(port, baud, timeout)
-        self.outType = "hex"
+        self.outType = "char"
 
     def clearScreen(self, color1=-1, color2=-1):
         if color1 == -1:

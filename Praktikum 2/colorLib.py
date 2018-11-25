@@ -29,4 +29,4 @@ blue2 = hex2col(0,0,255)
 green2 = hex2col(0,255,0)
 white2 = hex2col(255,255,255)
 black2 = hex2col(0,0,0)
-grey2 = hex2col(125,125,125=
+grey2 = hex2col(125,125,125)

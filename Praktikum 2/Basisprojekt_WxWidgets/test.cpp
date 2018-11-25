@@ -53,8 +53,8 @@ void main()
 		char diaRightFg[8];
 
 		std::memcpy(diaLeftFg, blue, 8);
-		std::memcpy(diaRightFg, blue, 8);
-		invertColor(diaRightFg);
+		std::memcpy(diaRightFg, bgColor, 8);
+//		invertColor(diaRightFg);
 
 
 		int poti = 0;
@@ -76,6 +76,7 @@ void main()
 		dsp.drawRectangle(0, 0, DISP_WIDTH, DISP_HEIGHT, black, 5);
 
 		char gelesen[] = "gelesen";
+//		char gelesen[] = "c++ sucks";
 		dsp.drawText(gelesen_xPos, text_yPos, potiDesFg, potiDesBg, gelesen);
 		dsp.drawRectangle(gelesen_xPos, num_xPos, gelesen_xPos + sizeof(gelesen) * 7, 70, potiRecFg, 1);
 
@@ -100,17 +101,17 @@ void main()
 			sprintf(voltTxt, "%i.%02i", potiVolt / 100, potiVolt % 100);
 			dsp.drawText(volt_xPos + 15, text_yPos + 29, voltTxtFg, voltTxtBg, voltTxt);
 
-			diaWidth = map(poti, 0, 1023, gelesen_xPos + 4, volt_xPos + sizeof(sVolt) * 7 - 4);
+//			diaWidth = map(poti, 0, 1023, gelesen_xPos + 4, volt_xPos + sizeof(sVolt) * 7 - 4);
 //			dsp.drawRectangle(diaWidth, dia_yPos + 4 + 2, volt_xPos + sizeof(sVolt) * 7 - 4, dia_yPos + 14, diaRightFg);
 //			dsp.drawRectangle(gelesen_xPos + 4, dia_yPos + 4 + 2, diaWidth, dia_yPos + 14, diaLeftFg);
-			dsp.drawBalken(gelesen_xPos + 4, dia_yPos + 4 + 2, volt_xPos + sizeof(sVolt) * 7 - 4, dia_yPos + 14, diaLeftFg, diaRightFg, poti, 1023);
+			dsp.drawBalken(gelesen_xPos + 4, dia_yPos + 4 + 2, volt_xPos + sizeof(sVolt) * 7 - 4, dia_yPos + 14, diaLeftFg, diaRightFg, poti, 1023); //1023
 
-			/*
-			invertColor(potiTxtBg);
-			invertColor(voltTxtBg);
-			invertColor(diaLeftFg);
-			invertColor(diaRightFg);
-			*/
+			if (false) {
+				invertColor(potiTxtBg);
+				invertColor(voltTxtBg);
+				invertColor(diaLeftFg);
+				invertColor(diaRightFg);
+			}
 
 			Sleep(10);
 //			runMainloop = false;

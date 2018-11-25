@@ -1,6 +1,7 @@
 #pragma once
 
 #include "comBasis.h"
+#include <iostream>
 
 class Serial {
 public:
@@ -43,6 +44,9 @@ private:
 	wxIOBase * port;			    // notwendig für die I/O-Befehle
 	comBasis ser;                    // Objekt für die Kommunkikation anlegen
 };
+
+
+
 
 
 class SerialDummy {
