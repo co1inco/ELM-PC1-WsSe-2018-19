@@ -7,8 +7,10 @@ quit_str = "Exit"
 edit_str = "Edit"
 help_str = "Help"
 
-def com1():
+def com1(d1=None):
     print("hello")
+def com2(d1=None):
+    print("hello2")
 
 def _exit():
     
@@ -22,7 +24,7 @@ def _exit():
 if __name__ == "__main__":
 
     root = Tk()
-    root.geometry("200x200")
+#    root.geometry("200x200")
 
     menubar = Menu(root)
     
@@ -39,13 +41,19 @@ if __name__ == "__main__":
     menubar.add_cascade(label=edit_str, menu=editmenu)
     menubar.add_cascade(label=help_str, menu=helpmenu)
     root.config(menu=menubar)
-
     
-    b1 = Button(root, text="Left", command=com1)
+    
+    b1 = Button(root, text="Left", command=com1, bg="black", fg="white")
     b1.pack(side='left')
  #   b1.grid(row=2, column=1)
 
+    b2 = Button(root, text="Right", command=com2, height=2, width=7)
+    b2.pack(side="left")
 
+
+    f1 = Frame(root, height=100, width=50, bg='white')
+    f1.bind("<Button-1>", com2)
+    f1.pack(side='right')
 
 
 
