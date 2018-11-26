@@ -18,6 +18,24 @@ public:
 
 private:
 	void OnMouseLeftDown(wxMouseEvent& event);
+	void OnMouseRightDown(wxMouseEvent& event);
+	void OnMouseEnter(wxMouseEvent& event);
+	void OnMouseLeave(wxMouseEvent& event);
+};
+
+
+class MyPanel2 : public wxPanel
+{
+public:
+	MyPanel2(wxWindow *parent, wxWindowID id, const wxPoint& pos, const wxSize& size);
+
+	DECLARE_EVENT_TABLE()
+
+private:
+	void OnMouseLeftDown(wxMouseEvent& event);
+	void OnMouseRightDown(wxMouseEvent& event);
+	void OnMouseEnter(wxMouseEvent& event);
+	void OnMouseLeave(wxMouseEvent& event);
 };
 
 #endif
