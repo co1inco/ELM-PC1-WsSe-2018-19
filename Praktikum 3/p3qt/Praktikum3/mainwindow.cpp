@@ -28,9 +28,9 @@ void MainWindow::initMenubar()
     Filemenu->addSeparator();
 
     ExitAct = new QAction(tr("E&xit"), this);
-    ExitAct->setShortcut('Ctrl+X');
+    ExitAct->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_X));
     ExitAct->setStatusTip("Exit Application");
- //   connect(ExitAct, &QAction::triggered, this, MainWindow::exit());
+    connect(ExitAct, &QAction::triggered, this, exit());
     Filemenu->addAction(ExitAct);
 
 }
