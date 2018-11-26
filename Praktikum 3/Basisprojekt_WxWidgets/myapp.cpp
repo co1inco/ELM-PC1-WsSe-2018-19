@@ -19,7 +19,7 @@ bool MyApp::OnInit()                        // Das Hauptprogramm startet hier
         return false;
 
                                             // Frame wird erzeugt (Name, Position, Größe)
-    frame = new MyFrame("meine erste Test-Anwendung", wxPoint (150,150), wxSize(600,600));
+    frame = new MyFrame("meine erste Test-Anwendung", wxPoint (150,100), wxSize(600,600));
         
     frame->Show(true);                      // und angezeigt
 
