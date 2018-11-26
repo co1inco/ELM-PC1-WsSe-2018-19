@@ -19,6 +19,8 @@ class MyFrame : public wxFrame          // Definition der Klasse MyFrame (abgele
 private:
     wxMenuBar *menuBar;                 // Menu-Zeile 
     wxMenu* dateiMenu;                  // Eintrag in der Menu-Zeile
+	wxMenu* viewMenu;
+	wxMenu* extraMenu;
                                             
     void OnExit(wxCommandEvent& event); // Event Handler
 

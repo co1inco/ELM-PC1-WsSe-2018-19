@@ -37,6 +37,13 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size) 
     dateiMenu->Append(EventExit, "E&xit\tAlt-X", "Programm beenden"); 
                                             // für jede neue Zeile 1x Append
 
+	viewMenu = new wxMenu;
+	menuBar->Append(viewMenu, "&View");
+
+
+	extraMenu = new wxMenu;
+	menuBar->Append(extraMenu, "&Extra");
+
 
     // Status-Zeile
     CreateStatusBar(2);                         // erzeugt die Statuszeile 
