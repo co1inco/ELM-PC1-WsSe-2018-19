@@ -27,23 +27,17 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size) 
                                             
     dateiMenu = new wxMenu;                 // neuer Eintrag in der Menü-Zeile
     menuBar->Append(dateiMenu, "&Datei");
-    SetMenuBar(menuBar);  
-
-
-    // Pulldown-Menü aufbauen 
 	dateiMenu->Append(wxID_EDIT, "&Bearbeiten", "Does nothing");
 	dateiMenu->Append(wxID_HELP, "&Hilfe", "Hilft nicht");
-
-    dateiMenu->Append(EventExit, "E&xit\tAlt-X", "Programm beenden"); 
-                                            // für jede neue Zeile 1x Append
+	dateiMenu->Append(EventExit, "E&xit\tAlt-X", "Programm beenden"); 
 
 	viewMenu = new wxMenu;
 	menuBar->Append(viewMenu, "&View");
 
-
 	extraMenu = new wxMenu;
 	menuBar->Append(extraMenu, "&Extra");
 
+	SetMenuBar(menuBar);
 
     // Status-Zeile
     CreateStatusBar(2);                         // erzeugt die Statuszeile 
