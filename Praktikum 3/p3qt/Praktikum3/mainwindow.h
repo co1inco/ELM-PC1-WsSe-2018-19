@@ -15,24 +15,23 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_pushButton_clicked();
+
+    void on_frame_customContextMenuRequested(const QPoint &pos);
+
+    void on_lcdNumber_overflow();
+
 private:
 
     void initMenubar();
+    void initStatusbar();
+    void initBody();
     void test();
+    void testDebug();
     void exit();
 
     Ui::MainWindow *ui;
-
-    QMenu *Filemenu;
-    QMenu *Viewmenu;
-    QMenu *Extramenu;
-    QMenu *impMenu;
-
-    QAction *ExitAct;
-    QAction *HelpAct;
-    QAction *EditAct;
-    QAction *impAct;
-
 
 };
 

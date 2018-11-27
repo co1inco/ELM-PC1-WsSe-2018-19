@@ -11,8 +11,10 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
@@ -22,25 +24,66 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
-    QMenuBar *menuBar;
-    QToolBar *mainToolBar;
     QWidget *centralWidget;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
+    QFrame *frame_2;
+    QLCDNumber *lcdNumber;
+    QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(400, 300);
-        menuBar = new QMenuBar(MainWindow);
-        menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        MainWindow->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(MainWindow);
-        mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
-        MainWindow->addToolBar(mainToolBar);
+        MainWindow->resize(600, 600);
+        MainWindow->setStyleSheet(QString::fromUtf8("QFrame::hover\n"
+"{\n"
+"	background-color: white;\n"
+"	MainWindow::test()\n"
+" };\n"
+"\n"
+"QPushButon::hover\n"
+"{	\n"
+"background-color: qradialgradient(spread:repeat, cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0 rgba(0, 169, 255, 147), stop:0.497326 rgba(0, 0, 0, 147), stop:1 rgba(0, 169, 255, 147));\n"
+"}"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(10, 60, 75, 23));
+        pushButton->setStyleSheet(QString::fromUtf8(""));
+        pushButton_2 = new QPushButton(centralWidget);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setGeometry(QRect(100, 60, 75, 41));
+
+        frame_2 = new QFrame(centralWidget);
+        frame_2->setObjectName(QString::fromUtf8("frame_2"));
+        frame_2->setGeometry(QRect(500, 10, 71, 551));
+        frame_2->setStyleSheet(QString::fromUtf8("QFrame\n"
+"{\n"
+"background-color: blue;\n"
+"};\n"
+"\n"
+"\n"
+"QFrame::hover\n"
+"{\n"
+"	alternate-background-color: white;\n"
+"	MainWindow::test()\n"
+" };\n"
+"\n"
+""));
+        frame_2->setFrameShape(QFrame::StyledPanel);
+        frame_2->setFrameShadow(QFrame::Raised);
+        lcdNumber = new QLCDNumber(centralWidget);
+        lcdNumber->setObjectName(QString::fromUtf8("lcdNumber"));
+        lcdNumber->setGeometry(QRect(60, 220, 121, 81));
+        lcdNumber->setMode(QLCDNumber::Hex);
+        lcdNumber->setProperty("value", QVariant(5.000000000000000));
         MainWindow->setCentralWidget(centralWidget);
+        mainToolBar = new QToolBar(MainWindow);
+        mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
+        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
         MainWindow->setStatusBar(statusBar);
@@ -53,6 +96,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
+        pushButton->setText(QApplication::translate("MainWindow", "Button1", nullptr));
+        pushButton_2->setText(QApplication::translate("MainWindow", "Button2", nullptr));
     } // retranslateUi
 
 };
