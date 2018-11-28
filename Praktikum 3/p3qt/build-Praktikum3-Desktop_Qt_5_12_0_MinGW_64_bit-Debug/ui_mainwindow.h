@@ -27,6 +27,7 @@ public:
     QWidget *centralWidget;
     QPushButton *pushButton;
     QPushButton *pushButton_2;
+//    frame1 *frame;
     QFrame *frame_2;
     QLCDNumber *lcdNumber;
     QToolBar *mainToolBar;
@@ -56,7 +57,6 @@ public:
         pushButton_2 = new QPushButton(centralWidget);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
         pushButton_2->setGeometry(QRect(100, 60, 75, 41));
-
         frame_2 = new QFrame(centralWidget);
         frame_2->setObjectName(QString::fromUtf8("frame_2"));
         frame_2->setGeometry(QRect(500, 10, 71, 551));

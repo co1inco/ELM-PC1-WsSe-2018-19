@@ -2,7 +2,7 @@
 
 #include "queue.h"
 
-#define QUEUE_LENGTH (15)
+//#define QUEUE_LENGTH (100)
 
 using namespace std;
 
@@ -169,33 +169,6 @@ std::ostream& operator<< (std::ostream &os, const Queue &queue)
 
     return os;  
 }  
-
-
-int main(){
-	
-	Queue *q = new Queue();	
-	
-	int i;
-	for (i=0; i<=QUEUE_LENGTH; i++){
-		q->addItem(i+1);
-	}
-	
-	int tmp;
-	q->printQueueDebug();
-	q->printQueue();
-	cout << q->addItem(30) << "\n";
-	cout << "Get " << q->getItem(&tmp) << "\n";
-	cout << "Get " << q->getItem(&tmp) << "\n";
-	q->printQueueDebug();
-	cout << q->addItem(31) << "\n";
-	cout << q->addItem(32) << "\n";
-	cout << q->addItem(33) << "\n";
-	q->printQueueDebug();	
-	q->printQueue();
-
-	cout << *q;
-}
-
 
 
 

@@ -1,4 +1,5 @@
-#define QUEUE_LENGTH (15)
+
+#define QUEUE_LENGTH (50) //>20 can result in problems. Try compile it as release
 
 #include <iostream>
 
@@ -37,7 +38,7 @@ public:
 */
 
 private:
-	int queueList[QUEUE_LENGTH+1];
+    int *queueList = new int[QUEUE_LENGTH+1];
 	int currentFirst;
 	int currentLast;
 	
