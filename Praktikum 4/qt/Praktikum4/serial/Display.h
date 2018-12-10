@@ -30,6 +30,6 @@ public:
 	int readPoti();
 
 private:
-    SerialDummy *ser;
+    Serial *ser;
 };
 

@@ -10,7 +10,7 @@
 //#include "queue.h"
 Queue *potiQueueG;
 
-bool potiQueueShow = true; //default show queue
+bool potiQueueShow = false; //default show queue
 
 queueWd::queueWd(QWidget *parent) : QWidget(parent)
 {

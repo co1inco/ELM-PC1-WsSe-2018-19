@@ -82,11 +82,11 @@ void MyFrame::initMenubar() {
 
 void MyFrame::initBody() {
 
-	but1 = new wxButton(this, 666, "Button1", wxPoint(20, 20));
-	but2 = new wxButton(this, 667, "Button2", wxPoint(80, 60), wxSize(60, 60));
+	but1 = new wxButton(this, wxID_ANY, "Button1", wxPoint(20, 20));
+	but2 = new wxButton(this, wxID_ANY, "Button2", wxPoint(80, 60), wxSize(60, 60));
 
-	panel1 = new MyPanel(this, 801, wxPoint(200, 5), wxSize(200, 490));
-	panel2 = new MyPanel2(this, 802, wxPoint(450, 5), wxSize(50, 490));
+	panel1 = new MyPanel(this, wxID_ANY, wxPoint(200, 5), wxSize(200, 490));
+	panel2 = new MyPanel2(this, wxID_ANY, wxPoint(450, 5), wxSize(50, 490));
 }
 
 // ----------------------------------------------------------------------------

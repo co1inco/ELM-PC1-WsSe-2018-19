@@ -6,12 +6,12 @@
 
 Serial::Serial()
 {
-
+    m_serialPort = new QSerialPort();
 }
 
 Serial::~Serial()
 {
-    m_serialPort->close();
+    close();
 }
 
 void Serial::write(char* command, int length)
@@ -29,13 +29,19 @@ void Serial::read(char* receive, int length)
 
 void Serial::close()
 {
-    m_serialPort->close();
+    if (m_serialPort->isOpen())
+        m_serialPort->close();
 }
 
 bool Serial::open()
 {
-    m_serialPort->open();
-    return true;
+    m_serialPort->setPortName("COM1");
+    m_serialPort->setBaudRate(QSerialPort::Baud9600);
+    if (m_serialPort->open(QIODevice::ReadWrite)){
+//        showStatusMessage("connected");
+        return true;
+    } else
+        return false;
 }
 
 
