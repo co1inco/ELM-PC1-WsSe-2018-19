@@ -1,6 +1,5 @@
 #pragma once
 
-//#include "comBasis.h"
 #include <iostream>
 
 #include <stdio.h>
@@ -10,50 +9,40 @@
 #include <unistd.h>
 
 
-/*
+#include <QtSerialPort/QSerialPort>
+
+
+
 class Serial {
 public:
-    Serial(int d) : dummy(d) {}
+    Serial();
+    ~Serial();
 
-	bool  open() {
-		port = ser.givePort();           // hole die Port-Adresse
-		return ser.openCom();
-	}
-	void close() {
-		ser.closeCom();
-	}
+    bool open();
+    void close();
 
-	void write(char* command, int length) {
-		port->Write(command, length);
-        usleep(10);
-	}
-	void Write(char* command, int length) {
-		write(command, length);
-	}
-	void writeCom(char* command, int length) {
-		write(command, length);
-	}
+    void write(char* command, int length);
+    void Write(char* command, int length) {
+        write(command, length);
+    }
+    void writeCom(char* command, int length) {
+        write(command, length);
+    }
 
-	void read(char* receive, int length) {
-		port->Readv(receive, length, NULL, false);
-	}
-	void Read(char* receive, int length) {
-		read(receive, length);
-	}
-	void Readv(char* receive, int length) {
-		read(receive, length);
-	}
-	void readCom(char* receive, int length) {
-		read(receive, length);
-	}
+    void read(char* receive, int length);
+    void Read(char* receive, int length) {
+        read(receive, length);
+    }
+    void Readv(char* receive, int length) {
+        read(receive, length);
+    }
+    void readCom(char* receive, int length) {
+        read(receive, length);
+    }
 
 private:
-	int dummy;
-	wxIOBase * port;			    // notwendig für die I/O-Befehle
-	comBasis ser;                    // Objekt für die Kommunkikation anlegen
+    QSerialPort *m_serialPort;
 };
-*/
-
 
 
 

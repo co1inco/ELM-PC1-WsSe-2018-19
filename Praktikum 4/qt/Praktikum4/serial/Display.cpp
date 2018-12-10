@@ -14,7 +14,7 @@ Display::Display(){
     ser = new SerialDummy();
 }
 Display::~Display(){
-
+    delete ser;
 }
 
 bool Display::init() {

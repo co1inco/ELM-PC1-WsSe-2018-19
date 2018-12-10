@@ -122,6 +122,7 @@ void MainWindow::on_connectBtn_clicked()
             serialConnection = true;
         }
     } else {
+        dsp->close();
         serialConnection = false;
     }
 }
@@ -131,5 +132,10 @@ void MainWindow::on_mittelwertBtn_clicked()
     int size = potiQueueG->getCount();
     int sum = potiQueueG->getSum();
 
-    mittelwValueG = sum / size;
+    if ((sum != 0) and (size != 0))
+        mittelwValueG = sum / size;
+    else {
+        errorMessage("Queue emty");
+        mittelwValueG = -1;
+    }
 }

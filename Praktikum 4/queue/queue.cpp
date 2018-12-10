@@ -2,7 +2,7 @@
 
 #include "queue.h"
 
-#define QUEUE_LENGTH (15)
+//#define QUEUE_LENGTH (15)
 
 using namespace std;
 
@@ -12,6 +12,19 @@ Queue::Queue(){
 	
 	emty = true;
 	size = 0;
+}
+Queue::Queue(const Queue& a){
+	currentLast = a.currentLast;
+	currentFirst = a.currentFirst;
+	
+	int i;
+	for (i=0; i<=QUEUE_LENGTH; i++){
+		queueList[i] = a.queueList[i];
+	}
+}
+
+Queue::~Queue(){
+	
 }
 
 void Queue::increase(int *i){
@@ -193,7 +206,30 @@ int main(){
 	q->printQueueDebug();	
 	q->printQueue();
 
-	cout << *q;
+	cout << "----Copy test----\n";
+	Queue *r = new Queue(*q);
+	q->clear();
+	
+	r->printQueueDebug();
+	q->printQueueDebug();
+	
+	cout << *r;
+	
+	cout << "----g Funkt----\n";
+	
+	q->qu_in(1);
+	q->qu_in(2);
+	q->qu_in(3);
+	cout << q->qu_out() << "\n";
+	cout << q->is_qu_emty() << "\n";
+	q->loesche_qu();
+	cout << q->gib_anz() << "\n";
+	cout << q->gib_sum() << "\n";
+	
+	delete q;
+	q = NULL;
+	delete r;
+	r = NULL;
 }
 
 
