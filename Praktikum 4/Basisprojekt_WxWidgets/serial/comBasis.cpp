@@ -8,7 +8,7 @@
 
 comBasis::comBasis()					// Konstruktor
 {
-	port = new wxSerialPort();			// serial port anlegen
+//	port = new wxSerialPort();			// serial port anlegen
 }
 
 comBasis::~comBasis()					// Destruktor
@@ -27,7 +27,7 @@ bool comBasis::openCom ()				// Öffnen des COM-Ports
 	char devname[64];
 
 	baudrate = wxBAUD_9600;
-	sprintf (devname, wxCOM1);
+	sprintf (devname, wxCOM6);
 
 	if(port -> Open(devname) < 0)		// Versuch, COM-Port zu öffnen
 	{

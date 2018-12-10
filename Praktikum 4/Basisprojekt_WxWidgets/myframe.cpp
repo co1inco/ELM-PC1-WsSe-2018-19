@@ -10,7 +10,6 @@
 #include "myapp.h"
 #include "myframe.h"
 #include "mypanel.h"
-#include "comBasis.h"
 
 BEGIN_EVENT_TABLE(MyFrame, wxFrame)         // Die Event-Table verbindet die Events mit den Event-Handlern
     EVT_MENU(EventExit,  MyFrame::OnExit)   // Klickt man im Datei-Menü auf Exit, so 

@@ -7,7 +7,6 @@
 #ifndef COMBASIS
 #define COMBASIS
 
-
 #include "wx/ctb-0.13/iobase.h"			// interne H-Dateien 
 #include "wx/ctb-0.13/serport.h"
 #include "wx/ctb-0.13/timer.h"

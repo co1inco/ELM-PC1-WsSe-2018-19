@@ -14,22 +14,24 @@
     <ClCompile Include="myapp.cpp" />
     <ClCompile Include="myframe.cpp" />
     <ClCompile Include="mypanel.cpp" />
-    <ClCompile Include="queue.cpp" />
     <ClCompile Include="serial\colorLib.cpp" />
+    <ClCompile Include="serial\comBasis.cpp" />
+    <ClCompile Include="serial\Display.cpp" />
+    <ClCompile Include="serial\Serial.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="myapp.h" />
-    <None Include="myframe.h" />
-    <None Include="mypanel.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="queue.h" />
+    <ClInclude Include="myapp.h" />
+    <ClInclude Include="myframe.h" />
+    <ClInclude Include="mypanel.h" />
     <ClInclude Include="serial\colorLib.h" />
+    <ClInclude Include="serial\comBasis.h" />
+    <ClInclude Include="serial\Display.h" />
+    <ClInclude Include="serial\Serial.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{667AFB6A-CCFF-48A1-B1AD-E8A11AA4F604}</ProjectGuid>
     <RootNamespace>Basisprojekt_WxWidgets</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -66,8 +68,8 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>winmm.lib;wxmsw31ud_core.lib;wxbase31ud.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;comctl32.lib;rpcrt4.lib;winmm.lib;advapi32.lib;wsock32.lib;wxctbd-0.13.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(WXCTB)\lib;$(WXWIN)\lib\vc_lib;$(WXCTB)\lib\vc_lib;$(WXCTB)\lib\vc140_dll</AdditionalLibraryDirectories>
+      <AdditionalDependencies>wxmsw31ud_core.lib;wxbase31ud.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;comctl32.lib;rpcrt4.lib;winmm.lib;advapi32.lib;wsock32.lib;wxctbd-0.13.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(WXCTB)\lib;$(WXWIN)\lib\vc_lib;$(WXCTB)\lib\vc_lib;</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
